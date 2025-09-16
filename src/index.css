@@ -65,3 +65,7 @@
 .animate-scroll-right {
   animation: scroll-right 30s linear infinite;
 }
+select option {
+  background: rgba(150, 101, 101, 0.9); /* A dark, slightly transparent background */
+  color: white;
+}

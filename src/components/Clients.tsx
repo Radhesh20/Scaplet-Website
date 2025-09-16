@@ -24,10 +24,9 @@ const Clients = () => {
           </p>
         </div>
 
-        {/* Scrolling Clients */}
+        {/* Single Row Scrolling Clients */}
         <div className="relative">
-          {/* First Row - Left to Right */}
-          <div className="flex animate-scroll-left mb-8">
+          <div className="flex animate-scroll-left">
             {[...clients, ...clients].map((client, index) => (
               <div key={index} className="flex-shrink-0 mx-8">
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
@@ -39,33 +38,6 @@ const Clients = () => {
                 </div>
               </div>
             ))}
-          </div>
-
-          {/* Second Row - Right to Left */}
-          <div className="flex animate-scroll-right">
-            {[...clients, ...clients].map((client, index) => (
-              <div key={index} className="flex-shrink-0 mx-8">
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
-                  <div className="w-24 h-16 bg-white/20 rounded-lg flex items-center justify-center">
-                    <span className="text-white/80 font-semibold text-sm text-center">
-                      {client.name}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="text-center mt-16">
-          <div className="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
-            <span className="text-white/80 font-medium">Ready to join them?</span>
-            <a 
-              href="#contact" 
-              className="ml-4 bg-white text-[#8B0000] px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors"
-            >
-              Get Started
-            </a>
           </div>
         </div>
       </div>

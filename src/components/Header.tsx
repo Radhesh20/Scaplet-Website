@@ -11,17 +11,17 @@ const Header = () => {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <div className="flex items-center">
-            <div className="text-2xl font-bold text-white">
+            <a href="/" className="text-2xl font-bold text-white hover:text-yellow-300 transition-colors">
               SCAPLET
-            </div>
+            </a>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#home" className="text-white/80 hover:text-yellow-300 transition-colors">
+            <a href="/" className="text-white/80 hover:text-yellow-300 transition-colors">
               Home
             </a>
-            <a href="#about" className="text-white/80 hover:text-yellow-300 transition-colors">
+            <a href="/about" className="text-white/80 hover:text-yellow-300 transition-colors">
               About
             </a>
             <a href="/services" className="text-white/80 hover:text-yellow-300 transition-colors">
@@ -30,8 +30,11 @@ const Header = () => {
             <a href="/portfolio" className="text-white/80 hover:text-yellow-300 transition-colors">
               Portfolio
             </a>
-            <a href="#testimonials" className="text-white/80 hover:text-yellow-300 transition-colors">
-              Testimonials
+            <a href="/blog" className="text-white/80 hover:text-yellow-300 transition-colors">
+              Blog
+            </a>
+            <a href="/careers" className="text-white/80 hover:text-yellow-300 transition-colors">
+              Careers
             </a>
             <a href="#contact" className="text-white/80 hover:text-yellow-300 transition-colors">
               Contact
@@ -63,10 +66,10 @@ const Header = () => {
         {isOpen && (
           <div className="md:hidden py-4 border-t border-white/20">
             <div className="flex flex-col space-y-4">
-              <a href="#home" className="text-white/80 hover:text-yellow-300 transition-colors">
+              <a href="/" className="text-white/80 hover:text-yellow-300 transition-colors">
                 Home
               </a>
-              <a href="#about" className="text-white/80 hover:text-yellow-300 transition-colors">
+              <a href="/about" className="text-white/80 hover:text-yellow-300 transition-colors">
                 About
               </a>
               <a href="/services" className="text-white/80 hover:text-yellow-300 transition-colors">
@@ -75,8 +78,11 @@ const Header = () => {
               <a href="/portfolio" className="text-white/80 hover:text-yellow-300 transition-colors">
                 Portfolio
               </a>
-              <a href="#testimonials" className="text-white/80 hover:text-yellow-300 transition-colors">
-                Testimonials
+              <a href="/blog" className="text-white/80 hover:text-yellow-300 transition-colors">
+                Blog
+              </a>
+              <a href="/careers" className="text-white/80 hover:text-yellow-300 transition-colors">
+                Careers
               </a>
               <a href="#contact" className="text-white/80 hover:text-yellow-300 transition-colors">
                 Contact

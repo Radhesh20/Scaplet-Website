@@ -1,12 +1,34 @@
-import React from 'react';
-import { Target, Eye, Users, Lightbulb, Shield, Zap, TrendingUp } from 'lucide-react';
+import React, { useState } from 'react';
+import { Target, Eye, Users, Lightbulb, Shield, Zap, TrendingUp, Sparkles } from 'lucide-react';
 
 const About = () => {
+  const [hoveredValue, setHoveredValue] = useState<number | null>(null);
+
   const values = [
-    { icon: Lightbulb, title: 'Innovation', description: 'Cutting-edge solutions for modern challenges' },
-    { icon: Shield, title: 'Transparency', description: 'Clear communication and honest practices' },
-    { icon: Zap, title: 'Creativity', description: 'Unique designs that stand out' },
-    { icon: TrendingUp, title: 'Growth', description: 'Focused on scaling your business' },
+    { 
+      icon: Lightbulb, 
+      title: 'Innovation', 
+      description: 'Cutting-edge solutions for modern challenges',
+      color: 'from-yellow-400 to-orange-500'
+    },
+    { 
+      icon: Shield, 
+      title: 'Transparency', 
+      description: 'Clear communication and honest practices',
+      color: 'from-blue-400 to-cyan-500'
+    },
+    { 
+      icon: Zap, 
+      title: 'Creativity', 
+      description: 'Unique designs that stand out',
+      color: 'from-purple-400 to-pink-500'
+    },
+    { 
+      icon: TrendingUp, 
+      title: 'Growth', 
+      description: 'Focused on scaling your business',
+      color: 'from-green-400 to-emerald-500'
+    },
   ];
 
   return (
@@ -53,14 +75,33 @@ const About = () => {
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, index) => (
-              <div key={index} className="text-center">
-                <div className="bg-white/10 backdrop-blur-sm rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 border border-white/20">
-                  <value.icon className="h-8 w-8 text-yellow-300" />
+              <div 
+                key={index} 
+                className="text-center group cursor-pointer"
+                onMouseEnter={() => setHoveredValue(index)}
+                onMouseLeave={() => setHoveredValue(null)}
+              >
+                <div className={`relative bg-white/10 backdrop-blur-sm rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 border border-white/20 transition-all duration-500 transform group-hover:scale-110 ${
+                  hoveredValue === index ? 'shadow-2xl' : ''
+                }`}>
+                  {hoveredValue === index && (
+                    <div className={`absolute inset-0 bg-gradient-to-r ${value.color} rounded-full opacity-20 animate-pulse`}></div>
+                  )}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    {hoveredValue === index && (
+                      <Sparkles className="absolute h-4 w-4 text-yellow-300 animate-spin" style={{ top: '10%', right: '10%' }} />
+                    )}
+                  </div>
+                  <value.icon className={`h-8 w-8 transition-all duration-300 ${
+                    hoveredValue === index ? 'text-yellow-300 scale-110' : 'text-white'
+                  }`} />
                 </div>
-                <h4 className="text-lg font-semibold text-white mb-2">
+                <h4 className={`text-lg font-semibold mb-2 transition-colors duration-300 ${
+                  hoveredValue === index ? 'text-yellow-300' : 'text-white'
+                }`}>
                   {value.title}
                 </h4>
-                <p className="text-white/70">
+                <p className="text-white/70 transition-all duration-300 group-hover:text-white/90">
                   {value.description}
                 </p>
               </div>
