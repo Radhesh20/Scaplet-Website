@@ -72,9 +72,9 @@ const Hero = () => {
               <ArrowRight className="ml-3 h-5 w-5" />
             </a>
 
-            <a 
-              href="/contact" 
-              className="inline-flex items-center px-8 py-4 rounded-full text-slate-800 font-semibold text-lg bg-white/70 border border-white/60 hover:bg-white transition"
+            <a
+              href="/contact"
+              className="inline-flex items-center px-8 py-4 rounded-full text-slate-900 font-semibold text-lg bg-white border-2 border-slate-300 shadow-md hover:bg-slate-50 hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
               Request a Quote
             </a>

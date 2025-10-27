@@ -169,7 +169,7 @@ function HomePage() {
                         <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
                       ))}
                     </div>
-                    <p className="text-gray-700 mb-4 italic">"{testimonial.content}"</p>
+                    <p className="text-gray-700 mb-4 italic whitespace-normal break-words">"{testimonial.content}"</p>
                     <div>
                       <div className="font-semibold">{testimonial.name}</div>
                       <div className="text-sm text-gray-500">{testimonial.company}</div>
@@ -188,7 +188,7 @@ function HomePage() {
                         <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
                       ))}
                     </div>
-                    <p className="text-gray-700 mb-4 italic">"{testimonial.content}"</p>
+                    <p className="text-gray-700 mb-4 italic whitespace-normal break-words">"{testimonial.content}"</p>
                     <div>
                       <div className="font-semibold">{testimonial.name}</div>
                       <div className="text-sm text-gray-500">{testimonial.company}</div>
