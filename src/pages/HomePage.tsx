@@ -163,16 +163,26 @@ function HomePage() {
             <div className="scroll-container">
               <div className="scroll-content flex space-x-6">
                 {[...testimonials, ...testimonials].map((testimonial, index) => (
-                  <div key={index} className="flex-shrink-0 w-96 glass-card p-6">
-                    <div className="flex items-center space-x-1 mb-4">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                      ))}
+                  <div key={index} className="flex-shrink-0 w-96 relative overflow-hidden rounded-2xl shadow-lg">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-teal-500/20 to-purple-500/20 backdrop-blur-sm"></div>
+                    <div className="absolute inset-0 opacity-10">
+                      <img
+                        src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg"
+                        alt="background"
+                        className="w-full h-full object-cover"
+                      />
                     </div>
-                    <p className="text-gray-700 mb-4 italic whitespace-normal break-words">"{testimonial.content}"</p>
-                    <div>
-                      <div className="font-semibold">{testimonial.name}</div>
-                      <div className="text-sm text-gray-500">{testimonial.company}</div>
+                    <div className="relative glass-card p-6">
+                      <div className="flex items-center space-x-1 mb-4">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                        ))}
+                      </div>
+                      <p className="text-gray-800 mb-4 italic whitespace-normal break-words font-medium">"{testimonial.content}"</p>
+                      <div>
+                        <div className="font-semibold text-gray-900">{testimonial.name}</div>
+                        <div className="text-sm text-gray-600">{testimonial.company}</div>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -182,16 +192,26 @@ function HomePage() {
             <div className="scroll-container">
               <div className="scroll-reverse flex space-x-6">
                 {[...testimonials.reverse(), ...testimonials].map((testimonial, index) => (
-                  <div key={index} className="flex-shrink-0 w-96 glass-card p-6">
-                    <div className="flex items-center space-x-1 mb-4">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                      ))}
+                  <div key={index} className="flex-shrink-0 w-96 relative overflow-hidden rounded-2xl shadow-lg">
+                    <div className="absolute inset-0 bg-gradient-to-br from-teal-500/20 via-blue-500/20 to-cyan-500/20 backdrop-blur-sm"></div>
+                    <div className="absolute inset-0 opacity-10">
+                      <img
+                        src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg"
+                        alt="background"
+                        className="w-full h-full object-cover"
+                      />
                     </div>
-                    <p className="text-gray-700 mb-4 italic whitespace-normal break-words">"{testimonial.content}"</p>
-                    <div>
-                      <div className="font-semibold">{testimonial.name}</div>
-                      <div className="text-sm text-gray-500">{testimonial.company}</div>
+                    <div className="relative glass-card p-6">
+                      <div className="flex items-center space-x-1 mb-4">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                        ))}
+                      </div>
+                      <p className="text-gray-800 mb-4 italic whitespace-normal break-words font-medium">"{testimonial.content}"</p>
+                      <div>
+                        <div className="font-semibold text-gray-900">{testimonial.name}</div>
+                        <div className="text-sm text-gray-600">{testimonial.company}</div>
+                      </div>
                     </div>
                   </div>
                 ))}
