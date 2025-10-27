@@ -55,7 +55,8 @@ function HomePage() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <Link to="/contact" className="btn-primary flex items-center space-x-2">
+            {/* Changed: add hero-cta class and keep layout classes */}
+            <Link to="/contact" className="btn-primary hero-cta flex items-center space-x-2">
               <span>{heroContent.primaryCTA}</span>
               <ArrowRight className="h-5 w-5" />
             </Link>
@@ -64,7 +65,39 @@ function HomePage() {
             </Link>
           </motion.div>
         </div>
-      </section>
+        {/* Inline styles for hero primary CTA (hover gradient + contrast) */}
+        <style>{`
+          .hero-cta {
+            background: rgba(255,255,255,0.96);
+            color: #0f172a;
+            border: 1px solid rgba(15,23,42,0.06);
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 8px 22px rgba(2,6,23,0.12);
+            transition: transform 0.32s ease, box-shadow 0.32s ease, color 0.32s ease, background 0.32s ease;
+            background-size: 200% 100%;
+          }
+
+          .hero-cta svg { color: inherit; }
+
+          .hero-cta:hover,
+          .hero-cta:focus {
+            background-image: linear-gradient(90deg, #06b6d4 0%, #3b82f6 100%);
+            color: #ffffff;
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px rgba(59,130,246,0.18);
+            border-color: transparent;
+          }
+
+          .hero-cta:focus-visible {
+            outline: 3px solid rgba(59,130,246,0.24);
+            outline-offset: 3px;
+          }
+        `}</style>
+
 
       {/* Client Logos */}
       <section className="py-16 bg-white/50">
