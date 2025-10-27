@@ -99,16 +99,16 @@ const Blog = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#8B0000] via-[#A0001C] to-[#E63946]">
+    <div className="min-h-screen bg-white">
       {/* Header */}
-      <div className="bg-[#1a0000]/95 backdrop-blur-md border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="bg-gradient-to-br from-[#1a0000] to-[#2a0000] text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              SCAPLET Blog
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              SCAPLET Insights
             </h1>
             <p className="text-xl text-white/80 max-w-3xl mx-auto">
-              Insights, tips, and trends from the world of digital design, development, and marketing
+              Expert insights, industry trends, and practical tips from the world of digital design, development, and marketing
             </p>
           </div>
         </div>
@@ -120,13 +120,13 @@ const Blog = () => {
           <div className="flex flex-col md:flex-row gap-6 mb-8">
             {/* Search */}
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-white/50" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
               <input
                 type="text"
                 placeholder="Search articles..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-yellow-300 transition-all duration-300 text-white placeholder-white/50"
+                className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E63946] focus:border-[#E63946] transition-all duration-300"
               />
             </div>
           </div>
@@ -139,14 +139,14 @@ const Blog = () => {
                 onClick={() => setSelectedCategory(category.id)}
                 className={`px-4 py-2 rounded-full font-medium transition-all duration-300 flex items-center ${
                   selectedCategory === category.id
-                    ? 'bg-white text-[#8B0000] shadow-lg'
-                    : 'bg-white/10 text-white/80 hover:bg-white/20 border border-white/20'
+                    ? 'bg-[#E63946] text-white shadow-lg'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
                 <Tag className="h-4 w-4 mr-2" />
                 {category.name}
                 <span className={`ml-2 px-2 py-1 rounded-full text-xs ${
-                  selectedCategory === category.id ? 'bg-[#8B0000]/20' : 'bg-white/20'
+                  selectedCategory === category.id ? 'bg-white/20' : 'bg-gray-200'
                 }`}>
                   {category.count}
                 </span>
@@ -158,7 +158,7 @@ const Blog = () => {
         {/* Blog Posts Grid */}
         <div className="grid lg:grid-cols-2 gap-8">
           {filteredPosts.map((post) => (
-            <article key={post.id} className="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-white/20 hover:bg-white/15 transition-all duration-300 group">
+            <article key={post.id} className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group">
               {/* Post Image */}
               <div className="relative overflow-hidden h-48">
                 <img 
@@ -168,7 +168,7 @@ const Blog = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div className="absolute top-4 left-4">
-                  <span className="bg-yellow-300 text-[#8B0000] px-3 py-1 rounded-full text-xs font-medium">
+                  <span className="bg-[#E63946] text-white px-3 py-1 rounded-full text-xs font-medium">
                     {post.category}
                   </span>
                 </div>
@@ -181,12 +181,12 @@ const Blog = () => {
 
               {/* Post Content */}
               <div className="p-6">
-                <p className="text-white/70 mb-4 leading-relaxed line-clamp-3">
+                <p className="text-gray-600 mb-4 leading-relaxed line-clamp-3">
                   {post.excerpt}
                 </p>
 
                 {/* Meta Information */}
-                <div className="flex items-center justify-between text-sm text-white/60 mb-4">
+                <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
                   <div className="flex items-center">
                     <User className="h-4 w-4 mr-1" />
                     {post.author}
@@ -204,14 +204,14 @@ const Blog = () => {
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {post.tags.slice(0, 3).map((tag, index) => (
-                    <span key={index} className="bg-white/10 text-white/80 px-2 py-1 rounded-full text-xs">
+                    <span key={index} className="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-xs">
                       {tag}
                     </span>
                   ))}
                 </div>
 
                 {/* Read More Button */}
-                <button className="w-full bg-gradient-to-r from-yellow-300 to-yellow-400 text-[#8B0000] py-3 px-6 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300 flex items-center justify-center group">
+                <button className="w-full bg-[#E63946] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[#FF4C29] transition-all duration-300 flex items-center justify-center group">
                   Read Full Article
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </button>
@@ -223,32 +223,40 @@ const Blog = () => {
         {/* No Results */}
         {filteredPosts.length === 0 && (
           <div className="text-center py-12">
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 max-w-md mx-auto">
-              <Search className="h-12 w-12 text-white/50 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-white mb-2">No articles found</h3>
-              <p className="text-white/70">Try adjusting your search terms or category filter.</p>
+            <div className="bg-gray-50 rounded-2xl p-8 max-w-md mx-auto">
+              <Search className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">No articles found</h3>
+              <p className="text-gray-600">Try adjusting your search terms or category filter.</p>
             </div>
           </div>
         )}
 
         {/* Newsletter Signup */}
         <div className="mt-20">
-          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 text-center">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              Stay Updated
-            </h3>
-            <p className="text-white/80 mb-6 max-w-2xl mx-auto">
-              Subscribe to our newsletter to get the latest insights, tips, and trends delivered straight to your inbox.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-yellow-300 transition-all duration-300 text-white placeholder-white/50"
-              />
-              <button className="bg-gradient-to-r from-yellow-300 to-yellow-400 text-[#8B0000] px-6 py-3 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
-                Subscribe
-              </button>
+          <div className="bg-gradient-to-br from-[#1a0000] to-[#2a0000] text-white rounded-2xl p-8 text-center relative overflow-hidden">
+            {/* Background Animation */}
+            <div className="absolute inset-0">
+              <div className="absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full blur-2xl animate-pulse"></div>
+              <div className="absolute bottom-10 right-10 w-40 h-40 bg-[#E63946]/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+            </div>
+            
+            <div className="relative z-10">
+              <h3 className="text-2xl font-bold mb-4">
+                Stay Ahead of the Curve
+              </h3>
+              <p className="text-white/80 mb-6 max-w-2xl mx-auto">
+                Get the latest insights, tips, and trends delivered straight to your inbox. Join our community of digital innovators.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="flex-1 px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-[#E63946] text-gray-800"
+                />
+                <button className="bg-[#E63946] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#FF4C29] transition-all duration-300">
+                  Subscribe
+                </button>
+              </div>
             </div>
           </div>
         </div>

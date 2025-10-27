@@ -93,7 +93,7 @@ const About = () => {
                     )}
                   </div>
                   <value.icon className={`h-8 w-8 transition-all duration-300 ${
-                    hoveredValue === index ? 'text-yellow-300 scale-110' : 'text-white'
+                    hoveredValue === index ? 'text-yellow-300 scale-110' : 'text-yellow-300'
                   }`} />
                 </div>
                 <h4 className={`text-lg font-semibold mb-2 transition-colors duration-300 ${

@@ -145,6 +145,19 @@ const Testimonials = () => {
             ))}
           </div>
         </div>
+
+        <div className="text-center mt-16">
+          <div className="bg-gradient-to-r from-[#8B0000] to-[#E63946] text-white rounded-xl p-8 inline-block border border-white/20">
+            <h3 className="text-2xl font-bold mb-2">Join Our Happy Clients</h3>
+            <p className="text-white/80 mb-4">Ready to transform your digital presence?</p>
+            <a 
+              href="#contact" 
+              className="bg-white text-[#8B0000] px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors inline-block"
+            >
+              Get Started Today
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

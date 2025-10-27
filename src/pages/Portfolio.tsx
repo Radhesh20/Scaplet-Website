@@ -17,7 +17,8 @@ const Portfolio = () => {
       rating: 5,
       results: ['300% increase in online sales', '50% reduction in cart abandonment', '24/7 automated support'],
       testimonial: "SCAPLET transformed our business completely. The platform they built exceeded all our expectations.",
-      link: '#'
+      link: '#',
+      liveLink: 'https://techflow-demo.com'
     },
     {
       id: 2,
@@ -31,7 +32,8 @@ const Portfolio = () => {
       rating: 5,
       results: ['180% increase in orders', '95% customer satisfaction', '40% faster delivery times'],
       testimonial: "The app is beautiful and functional. Our customers love the seamless ordering experience.",
-      link: '#'
+      link: '#',
+      liveLink: 'https://foodiehub-app.com'
     },
     {
       id: 3,
@@ -45,7 +47,8 @@ const Portfolio = () => {
       rating: 5,
       results: ['500% increase in engagement', '250% growth in followers', '150% boost in sales'],
       testimonial: "Our brand visibility skyrocketed. SCAPLET's creative approach is unmatched.",
-      link: '#'
+      link: '#',
+      liveLink: 'https://stylecraft-campaign.com'
     },
     {
       id: 4,
@@ -59,7 +62,8 @@ const Portfolio = () => {
       rating: 5,
       results: ['1000+ active students', '90% course completion rate', '4.8/5 user rating'],
       testimonial: "The platform is intuitive and engaging. Our students love the interactive features.",
-      link: '#'
+      link: '#',
+      liveLink: 'https://edutech-platform.com'
     },
     {
       id: 5,
@@ -73,7 +77,8 @@ const Portfolio = () => {
       rating: 5,
       results: ['70% reduction in wait times', '200+ daily consultations', '98% patient satisfaction'],
       testimonial: "Revolutionary solution for modern healthcare. Patients and doctors both love it.",
-      link: '#'
+      link: '#',
+      liveLink: 'https://healthcare-plus.com'
     },
     {
       id: 6,
@@ -87,7 +92,8 @@ const Portfolio = () => {
       rating: 5,
       results: ['300% increase in awareness', '50K+ community members', '25% increase in eco-friendly practices'],
       testimonial: "They helped us build a movement, not just a brand. Incredible impact on our mission.",
-      link: '#'
+      link: '#',
+      liveLink: 'https://greentech-social.com'
     }
   ];
 
@@ -239,10 +245,21 @@ const Portfolio = () => {
                 </blockquote>
 
                 {/* Action Button */}
-                <button className="w-full bg-gradient-to-r from-yellow-300 to-yellow-400 text-[#8B0000] py-3 px-6 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300 flex items-center justify-center group">
-                  View Case Study
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </button>
+                <div className="grid grid-cols-2 gap-3">
+                  <button className="bg-gradient-to-r from-yellow-300 to-yellow-400 text-[#8B0000] py-3 px-4 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300 flex items-center justify-center group">
+                    Case Study
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                  <a 
+                    href={project.liveLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="bg-white/10 text-white py-3 px-4 rounded-lg font-semibold hover:bg-white/20 transition-all duration-300 flex items-center justify-center group border border-white/20"
+                  >
+                    Live Site
+                    <ExternalLink className="ml-2 h-4 w-4 group-hover:scale-110 transition-transform" />
+                  </a>
+                </div>
               </div>
             </div>
           ))}
@@ -250,27 +267,42 @@ const Portfolio = () => {
 
         {/* CTA Section */}
         <div className="text-center mt-20">
-          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 max-w-4xl mx-auto">
-            <h3 className="text-3xl font-bold text-white mb-4">
-              Ready to Start Your Project?
-            </h3>
-            <p className="text-white/80 text-lg mb-6">
-              Join our growing list of successful clients and transform your digital presence today.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="/services" 
-                className="bg-gradient-to-r from-yellow-300 to-yellow-400 text-[#8B0000] px-8 py-4 rounded-lg font-bold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300 inline-flex items-center justify-center transform hover:scale-105"
-              >
-                Get Custom Quote
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </a>
-              <a 
-                href="#contact" 
-                className="border-2 border-white/30 text-white px-8 py-4 rounded-lg font-bold hover:bg-white/10 hover:border-white transition-all duration-300 inline-flex items-center justify-center"
-              >
-                Schedule Consultation
-              </a>
+          <div className="relative bg-gradient-to-br from-[#8B0000] via-[#A0001C] to-[#E63946] text-white rounded-2xl p-12 border border-white/20 max-w-4xl mx-auto overflow-hidden">
+            {/* Background Animation */}
+            <div className="absolute inset-0">
+              <div className="absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full blur-2xl animate-pulse"></div>
+              <div className="absolute bottom-10 right-10 w-40 h-40 bg-yellow-300/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+            </div>
+            
+            <div className="relative z-10">
+              <div className="bg-gradient-to-r from-yellow-300 to-yellow-400 rounded-full p-4 w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                <Star className="h-10 w-10 text-[#8B0000]" />
+              </div>
+              <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-white via-yellow-200 to-white bg-clip-text text-transparent">
+                Ready to Create Your Success Story?
+              </h3>
+              <p className="text-white/90 text-xl mb-8 max-w-3xl mx-auto leading-relaxed">
+                Join our portfolio of successful projects and let's build something extraordinary together. 
+                Your vision, our expertise – the perfect combination for digital success.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a 
+                  href="/services" 
+                  className="group bg-white text-[#8B0000] px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-all duration-300 inline-flex items-center justify-center transform hover:scale-105 shadow-2xl"
+                >
+                  <span className="mr-2">🚀</span>
+                  Get Custom Quote
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </a>
+                <a 
+                  href="#contact" 
+                  className="group border-2 border-white/30 text-white px-8 py-4 rounded-lg font-bold hover:bg-white/10 hover:border-white transition-all duration-300 inline-flex items-center justify-center"
+                >
+                  <span className="mr-2">💬</span>
+                  Schedule Consultation
+                  <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>

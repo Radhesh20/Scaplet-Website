@@ -57,10 +57,10 @@ const FAQ = () => {
 
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <div key={index} className="bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg">
+            <div key={index} className="bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg overflow-hidden">
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-white/10 transition-colors"
+                className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-white/10 transition-all duration-300"
               >
                 <span className="font-semibold text-white">{faq.question}</span>
                 {openIndex === index ? (
@@ -70,7 +70,7 @@ const FAQ = () => {
                 )}
               </button>
               {openIndex === index && (
-                <div className="px-6 pb-4">
+                <div className="px-6 pb-4 pt-2 border-t border-white/10 bg-white/5">
                   <p className="text-white/70 leading-relaxed">{faq.answer}</p>
                 </div>
               )}

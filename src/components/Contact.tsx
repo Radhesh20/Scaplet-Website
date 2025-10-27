@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Facebook, Instagram, Linkedin, Twitter, Sparkles, Zap, Star } from 'lucide-react';
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -106,7 +107,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="font-semibold text-white">Phone</p>
-                      <p className="text-white/70">+91 XXX XXX XXXX</p>
+                      <p className="text-white/70">+91 9487240051 / +91 9791903451</p>
                     </div>
                   </div>
                   
@@ -234,7 +235,7 @@ const Contact = () => {
                         value={formData.phone}
                         onChange={handleChange}
                         className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-yellow-300 transition-all duration-300 text-white placeholder-white/50 group-hover:bg-white/15"
-                        placeholder="+91 XXX XXX XXXX"
+                        placeholder="+91 9487240051"
                       />
                     </div>
                     <div className="group">

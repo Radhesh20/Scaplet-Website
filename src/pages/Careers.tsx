@@ -314,6 +314,7 @@ const Careers = () => {
                     onChange={handleInputChange}
                     className="w-full px-3 py-2 bg-white/10 border border-white/30 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-yellow-300 transition-all duration-300 text-white placeholder-white/50"
                     placeholder="+91 XXX XXX XXXX"
+                     placeholder="+91 9487240051"
                   />
                 </div>
 

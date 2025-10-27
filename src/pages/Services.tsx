@@ -100,10 +100,10 @@ const Services = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#8B0000] via-[#A0001C] to-[#E63946]">
+    <div className="min-h-screen bg-gradient-to-br from-[#1a0000] via-[#2a0000] to-[#3a0000]">
       {/* Header */}
-      <div className="bg-[#1a0000]/95 backdrop-blur-md border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div className="bg-[#0d0000]/95 backdrop-blur-md border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
               Our Services
@@ -119,7 +119,7 @@ const Services = () => {
         {/* Services Grid */}
         <div className="grid lg:grid-cols-2 gap-8 mb-20">
           {services.map((service, index) => (
-            <div key={index} className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300">
+            <div key={index} className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-300">
               <div className="flex items-center mb-6">
                 <div className={`bg-gradient-to-r ${service.gradient} rounded-full p-4 mr-4`}>
                   <service.icon className="h-8 w-8 text-white" />
@@ -166,7 +166,7 @@ const Services = () => {
         </div>
 
         {/* Website Modifications */}
-        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 mb-20">
+        <div className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10 mb-20">
           <h3 className="text-3xl font-bold text-white mb-8 text-center">
             Website Modifications
           </h3>
@@ -195,190 +195,201 @@ const Services = () => {
           </div>
         </div>
 
-        {/* Custom Quote Form */}
-        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20">
-          <div className="text-center mb-8">
-            <h3 className="text-3xl font-bold text-white mb-4">
-              Get Custom Quote
-            </h3>
-            <p className="text-white/80 text-lg">
-              Tell us about your project and we'll provide a detailed quote within 24 hours
-            </p>
+        {/* Enhanced Custom Quote Form */}
+        <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10 relative overflow-hidden">
+          {/* Background Animation */}
+          <div className="absolute inset-0">
+            <div className="absolute top-10 left-10 w-32 h-32 bg-yellow-300/10 rounded-full blur-2xl animate-pulse"></div>
+            <div className="absolute bottom-10 right-10 w-40 h-40 bg-red-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
           </div>
-
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Basic Information */}
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-medium text-white mb-2">
-                  Full Name *
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-yellow-300 transition-all duration-300 text-white placeholder-white/50"
-                  placeholder="Your Name"
-                />
+          
+          <div className="relative z-10">
+            <div className="text-center mb-8">
+              <div className="bg-gradient-to-r from-yellow-300 to-yellow-400 rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <Star className="h-8 w-8 text-[#8B0000]" />
               </div>
-              <div>
-                <label className="block text-sm font-medium text-white mb-2">
-                  Email Address *
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-yellow-300 transition-all duration-300 text-white placeholder-white/50"
-                  placeholder="your@email.com"
-                />
-              </div>
+              <h3 className="text-3xl font-bold text-white mb-4">
+                Get Your Custom Quote
+              </h3>
+              <p className="text-white/80 text-lg">
+                Tell us about your project and we'll provide a detailed quote within 24 hours
+              </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-medium text-white mb-2">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-yellow-300 transition-all duration-300 text-white placeholder-white/50"
-                  placeholder="+91 XXX XXX XXXX"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-white mb-2">
-                  Company Name
-                </label>
-                <input
-                  type="text"
-                  name="company"
-                  value={formData.company}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-yellow-300 transition-all duration-300 text-white placeholder-white/50"
-                  placeholder="Your Company"
-                />
-              </div>
-            </div>
-
-            {/* Project Details */}
-            <div className="grid md:grid-cols-3 gap-6">
-              <div>
-                <label className="block text-sm font-medium text-white mb-2">
-                  Service Type *
-                </label>
-                <select
-                  name="service"
-                  required
-                  value={formData.service}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-yellow-300 transition-all duration-300 text-white"
-                >
-                  <option value="">Select Service</option>
-                  <option value="web-development">Web Design & Development</option>
-                  <option value="social-media">Social Media Campaigns</option>
-                  <option value="digital-marketing">Digital Marketing</option>
-                  <option value="app-development">App Development</option>
-                  <option value="multiple">Multiple Services</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-white mb-2">
-                  Budget Range
-                </label>
-                <select
-                  name="budget"
-                  value={formData.budget}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-yellow-300 transition-all duration-300 text-white"
-                >
-                  <option value="">Select Budget</option>
-                  <option value="5000-15000">₹5,000 - ₹15,000</option>
-                  <option value="15000-30000">₹15,000 - ₹30,000</option>
-                  <option value="30000-50000">₹30,000 - ₹50,000</option>
-                  <option value="50000+">₹50,000+</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-white mb-2">
-                  Timeline
-                </label>
-                <select
-                  name="timeline"
-                  value={formData.timeline}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-yellow-300 transition-all duration-300 text-white"
-                >
-                  <option value="">Select Timeline</option>
-                  <option value="asap">ASAP (Rush Job)</option>
-                  <option value="1-2weeks">1-2 Weeks</option>
-                  <option value="1month">1 Month</option>
-                  <option value="2-3months">2-3 Months</option>
-                  <option value="flexible">Flexible</option>
-                </select>
-              </div>
-            </div>
-
-            {/* Additional Features */}
-            <div>
-              <label className="block text-sm font-medium text-white mb-4">
-                Additional Features (Optional)
-              </label>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                {additionalFeatures.map((feature, index) => (
-                  <label key={index} className="flex items-center cursor-pointer">
-                    <input
-                      type="checkbox"
-                      checked={formData.features.includes(feature)}
-                      onChange={() => handleFeatureChange(feature)}
-                      className="sr-only"
-                    />
-                    <div className={`flex items-center px-3 py-2 rounded-lg border transition-all duration-300 ${
-                      formData.features.includes(feature)
-                        ? 'bg-yellow-300/20 border-yellow-300 text-yellow-300'
-                        : 'bg-white/5 border-white/20 text-white/70 hover:bg-white/10'
-                    }`}>
-                      <CheckCircle className={`h-4 w-4 mr-2 ${
-                        formData.features.includes(feature) ? 'text-yellow-300' : 'text-white/40'
-                      }`} />
-                      <span className="text-sm">{feature}</span>
-                    </div>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Basic Information */}
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-white mb-2">
+                    Full Name *
                   </label>
-                ))}
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-yellow-300 transition-all duration-300 text-white placeholder-white/50"
+                    placeholder="Your Name"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-white mb-2">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-yellow-300 transition-all duration-300 text-white placeholder-white/50"
+                    placeholder="your@email.com"
+                  />
+                </div>
               </div>
-            </div>
 
-            {/* Project Description */}
-            <div>
-              <label className="block text-sm font-medium text-white mb-2">
-                Project Description *
-              </label>
-              <textarea
-                name="message"
-                required
-                rows={6}
-                value={formData.message}
-                onChange={handleChange}
-                className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-yellow-300 transition-all duration-300 text-white placeholder-white/50 resize-none"
-                placeholder="Describe your project in detail. Include your goals, target audience, specific requirements, and any reference websites or apps you like..."
-              />
-            </div>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-white mb-2">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-yellow-300 transition-all duration-300 text-white placeholder-white/50"
+                    placeholder="+91 9487240051"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-white mb-2">
+                    Company Name
+                  </label>
+                  <input
+                    type="text"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-yellow-300 transition-all duration-300 text-white placeholder-white/50"
+                    placeholder="Your Company"
+                  />
+                </div>
+              </div>
 
-            <button
-              type="submit"
-              className="w-full bg-gradient-to-r from-yellow-300 to-yellow-400 text-[#8B0000] py-4 px-6 rounded-lg font-bold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300 flex items-center justify-center transform hover:scale-105 shadow-lg"
-            >
-              <Send className="mr-2 h-5 w-5" />
-              Request Custom Quote
-            </button>
-          </form>
+              {/* Project Details */}
+              <div className="grid md:grid-cols-3 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-white mb-2">
+                    Service Type *
+                  </label>
+                  <select
+                    name="service"
+                    required
+                    value={formData.service}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-yellow-300 transition-all duration-300 text-white"
+                  >
+                    <option value="">Select Service</option>
+                    <option value="web-development">Web Design & Development</option>
+                    <option value="social-media">Social Media Campaigns</option>
+                    <option value="digital-marketing">Digital Marketing</option>
+                    <option value="app-development">App Development</option>
+                    <option value="multiple">Multiple Services</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-white mb-2">
+                    Budget Range
+                  </label>
+                  <select
+                    name="budget"
+                    value={formData.budget}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-yellow-300 transition-all duration-300 text-white"
+                  >
+                    <option value="">Select Budget</option>
+                    <option value="5000-15000">₹5,000 - ₹15,000</option>
+                    <option value="15000-30000">₹15,000 - ₹30,000</option>
+                    <option value="30000-50000">₹30,000 - ₹50,000</option>
+                    <option value="50000+">₹50,000+</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-white mb-2">
+                    Timeline
+                  </label>
+                  <select
+                    name="timeline"
+                    value={formData.timeline}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-yellow-300 transition-all duration-300 text-white"
+                  >
+                    <option value="">Select Timeline</option>
+                    <option value="asap">ASAP (Rush Job)</option>
+                    <option value="1-2weeks">1-2 Weeks</option>
+                    <option value="1month">1 Month</option>
+                    <option value="2-3months">2-3 Months</option>
+                    <option value="flexible">Flexible</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Additional Features */}
+              <div>
+                <label className="block text-sm font-medium text-white mb-4">
+                  Additional Features (Optional)
+                </label>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                  {additionalFeatures.map((feature, index) => (
+                    <label key={index} className="flex items-center cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={formData.features.includes(feature)}
+                        onChange={() => handleFeatureChange(feature)}
+                        className="sr-only"
+                      />
+                      <div className={`flex items-center px-3 py-2 rounded-lg border transition-all duration-300 ${
+                        formData.features.includes(feature)
+                          ? 'bg-yellow-300/20 border-yellow-300 text-yellow-300'
+                          : 'bg-white/5 border-white/20 text-white/70 hover:bg-white/10'
+                      }`}>
+                        <CheckCircle className={`h-4 w-4 mr-2 ${
+                          formData.features.includes(feature) ? 'text-yellow-300' : 'text-white/40'
+                        }`} />
+                        <span className="text-sm">{feature}</span>
+                      </div>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              {/* Project Description */}
+              <div>
+                <label className="block text-sm font-medium text-white mb-2">
+                  Project Description *
+                </label>
+                <textarea
+                  name="message"
+                  required
+                  rows={6}
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-yellow-300 transition-all duration-300 text-white placeholder-white/50 resize-none"
+                  placeholder="Describe your project in detail. Include your goals, target audience, specific requirements, and any reference websites or apps you like..."
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-gradient-to-r from-yellow-300 to-yellow-400 text-[#8B0000] py-4 px-6 rounded-lg font-bold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300 flex items-center justify-center transform hover:scale-105 shadow-lg"
+              >
+                <Send className="mr-2 h-5 w-5" />
+                Request Custom Quote
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

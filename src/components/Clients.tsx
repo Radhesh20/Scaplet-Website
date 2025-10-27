@@ -2,14 +2,12 @@ import React from 'react';
 
 const Clients = () => {
   const clients = [
-    { name: 'TechStartup India', logo: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=100' },
-    { name: 'Fashion Forward', logo: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=100' },
-    { name: 'GreenTech Solutions', logo: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=100' },
-    { name: 'Global Consulting', logo: 'https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=100' },
-    { name: 'Local Restaurant Chain', logo: 'https://images.pexels.com/photos/6802049/pexels-photo-6802049.jpeg?auto=compress&cs=tinysrgb&w=100' },
-    { name: 'EdTech Startup', logo: 'https://images.pexels.com/photos/267371/pexels-photo-267371.jpeg?auto=compress&cs=tinysrgb&w=100' },
-    { name: 'FinTech Solutions', logo: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=100' },
-    { name: 'Healthcare Plus', logo: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=100' },
+    { name: 'TechStartup India' },
+    { name: 'Fashion Forward' },
+    { name: 'GreenTech Solutions' },
+    { name: 'Global Consulting' },
+    { name: 'Local Restaurant Chain' },
+    { name: 'EdTech Startup' },
   ];
 
   return (
@@ -24,20 +22,37 @@ const Clients = () => {
           </p>
         </div>
 
-        {/* Single Row Scrolling Clients */}
+        {/* Static Grid for Now - Scrolling Version Ready for Expansion */}
         <div className="relative">
-          <div className="flex animate-scroll-left">
-            {[...clients, ...clients].map((client, index) => (
-              <div key={index} className="flex-shrink-0 mx-8">
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
-                  <div className="w-24 h-16 bg-white/20 rounded-lg flex items-center justify-center">
-                    <span className="text-white/80 font-semibold text-sm text-center">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            {clients.map((client, index) => (
+              <div key={index} className="group">
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:scale-105 group-hover:border-yellow-300">
+                  <div className="w-full h-16 bg-white/20 rounded-lg flex items-center justify-center group-hover:bg-white/30 transition-all duration-300">
+                    <span className="text-white/80 font-semibold text-sm text-center group-hover:text-white">
                       {client.name}
                     </span>
                   </div>
                 </div>
               </div>
             ))}
+          </div>
+          
+          {/* Scrolling Version (Hidden for now, ready for expansion) */}
+          <div className="hidden">
+            <div className="flex animate-scroll-left">
+              {[...clients, ...clients].map((client, index) => (
+                <div key={index} className="flex-shrink-0 mx-8">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
+                    <div className="w-24 h-16 bg-white/20 rounded-lg flex items-center justify-center">
+                      <span className="text-white/80 font-semibold text-sm text-center">
+                        {client.name}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
