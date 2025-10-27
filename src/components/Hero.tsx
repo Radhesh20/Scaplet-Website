@@ -34,15 +34,25 @@ const Hero = () => {
 
           {/* Main Heading */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-tight">
-            <span className="block bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent animate-gradient">
-              We Design.
-            </span>
-            <span className="block bg-gradient-to-r from-white via-yellow-200 to-white bg-clip-text text-transparent animate-gradient delay-300">
-              We Develop.
-            </span>
-            <span className="block bg-gradient-to-r from-white via-red-200 to-white bg-clip-text text-transparent animate-gradient delay-500">
-              We Scale.
-            </span>
+            <div className="space-y-2">
+              <div className="flex flex-col md:flex-row md:justify-center md:space-x-6">
+                <span className="block bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent animate-gradient">
+                  We Design.
+                </span>
+                <span className="block bg-gradient-to-r from-white via-yellow-200 to-white bg-clip-text text-transparent animate-gradient delay-300">
+                  We Develop.
+                </span>
+              </div>
+
+              <div className="flex flex-col md:flex-row md:justify-center md:space-x-6">
+                <span className="block bg-gradient-to-r from-white via-red-200 to-white bg-clip-text text-transparent animate-gradient delay-500">
+                  We Market.
+                </span>
+                <span className="block bg-gradient-to-r from-white via-red-200 to-white bg-clip-text text-transparent animate-gradient delay-700">
+                  We Scale.
+                </span>
+              </div>
+            </div>
           </h1>
           
           {/* Subtitle */}
@@ -69,7 +79,7 @@ const Hero = () => {
             </a>
             <a 
               href="/services" 
-              className="group px-8 py-4 border-2 border-white/30 text-white rounded-full font-bold text-lg hover:bg-white/10 hover:border-white transition-all duration-300 backdrop-blur-sm"
+              className="group px-8 py-4 border-3 border-white/30 text-white rounded-full font-bold text-lg hover:bg-white/10 hover:border-white transition-all duration-300 backdrop-blur-sm"
             >
               Request Quote
             </a>
@@ -79,19 +89,19 @@ const Hero = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="group">
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
-                <div className="text-3xl font-black text-yellow-300 mb-2">50+</div>
+                <div className="text-3xl font-black text-yellow-300 mb-2">5+</div>
                 <div className="text-white/80">Projects Delivered</div>
               </div>
             </div>
             <div className="group">
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
-                <div className="text-3xl font-black text-red-300 mb-2">30+</div>
+                <div className="text-3xl font-black text-red-300 mb-2">3+</div>
                 <div className="text-white/80">Happy Clients</div>
               </div>
             </div>
             <div className="group">
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
-                <div className="text-3xl font-black text-blue-300 mb-2">2+</div>
+                <div className="text-3xl font-black text-blue-300 mb-2">1+</div>
                 <div className="text-white/80">Years Experience</div>
               </div>
             </div>
