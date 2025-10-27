@@ -48,9 +48,9 @@ const Hero = () => {
                 <span className="block bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
                   We Market.
                 </span>
-                <span className="block bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
+                {/* <span className="block bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
                   We Scale.
-                </span>
+                </span> */}
               </div>
             </div>
           </h1>
