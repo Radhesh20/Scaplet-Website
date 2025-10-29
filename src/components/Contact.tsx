@@ -1,16 +1,66 @@
-import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Facebook, Instagram, Linkedin, Twitter, Sparkles, Zap, Star } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Mail, Phone, MapPin, Send, Facebook, Instagram, Linkedin, Twitter, Sparkles, Zap, Star, CheckCircle2 } from 'lucide-react';
+import { useAdmin } from '../contexts/AdminContext';
 
 const Contact = () => {
+  const { services } = useAdmin();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    service: '',
+    company: '',
+    serviceType: '',
+    budget: '',
+    timeline: '',
     message: ''
   });
 
+  const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const serviceCategories = Array.from(new Set(services.map(service => service.category)));
+
+  const additionalFeatures = [
+    'E-commerce Integration',
+    'Payment Gateway',
+    'User Authentication',
+    'Admin Dashboard',
+    'Real-time Chat',
+    'Push Notifications',
+    'Multi-language Support',
+    'API Development',
+    'Analytics Integration',
+    'Social Media Integration',
+    'Database Design',
+    'Cloud Deployment'
+  ];
+
+  const budgetRanges = [
+    'Under ₹10,000',
+    '₹10,000 - ₹25,000',
+    '₹25,000 - ₹50,000',
+    '₹50,000 - ₹1,00,000',
+    'Above ₹1,00,000'
+  ];
+
+  const timelines = [
+    '1-2 weeks',
+    '2-4 weeks',
+    '1-2 months',
+    '2-3 months',
+    '3+ months'
+  ];
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const serviceId = urlParams.get('service');
+    if (serviceId) {
+      const service = services.find(s => s.id === serviceId);
+      if (service) {
+        setFormData(prev => ({ ...prev, serviceType: service.category }));
+      }
+    }
+  }, [services]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -19,15 +69,37 @@ const Contact = () => {
     });
   };
 
+  const handleFeatureToggle = (feature: string) => {
+    setSelectedFeatures(prev =>
+      prev.includes(feature)
+        ? prev.filter(f => f !== feature)
+        : [...prev, feature]
+    );
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
+
+    console.log('Quote Request:', {
+      ...formData,
+      selectedFeatures
+    });
+
     setTimeout(() => {
       setIsSubmitting(false);
-      alert('Thank you for your message! We\'ll get back to you soon.');
-      setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+      alert('Thank you for your request! We\'ll provide a detailed quote within 24 hours.');
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        serviceType: '',
+        budget: '',
+        timeline: '',
+        message: ''
+      });
+      setSelectedFeatures([]);
     }, 2000);
   };
 
@@ -181,11 +253,16 @@ const Contact = () => {
               
               <div className="relative z-10">
                 <div className="text-center mb-6">
+                  <div className="flex justify-center mb-4">
+                    <div className="bg-gradient-to-r from-yellow-300 to-yellow-400 rounded-full p-3">
+                      <Star className="h-6 w-6 text-[#8B0000]" />
+                    </div>
+                  </div>
                   <h3 className="text-2xl font-bold text-white mb-2">
-                    Start Your Project
+                    Get Your Custom Quote
                   </h3>
                   <p className="text-white/70">
-                    Tell us about your vision and we'll make it reality
+                    Tell us about your project and we'll provide a detailed quote within 24 hours
                   </p>
                 </div>
 
@@ -239,39 +316,120 @@ const Contact = () => {
                       />
                     </div>
                     <div className="group">
-                      <label htmlFor="service" className="block text-sm font-medium text-white mb-2">
-                        Service Needed
+                      <label htmlFor="company" className="block text-sm font-medium text-white mb-2">
+                        Company Name
+                      </label>
+                      <input
+                        type="text"
+                        id="company"
+                        name="company"
+                        value={formData.company}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-yellow-300 transition-all duration-300 text-white placeholder-white/50 group-hover:bg-white/15"
+                        placeholder="Your Company"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid md:grid-cols-3 gap-4">
+                    <div className="group">
+                      <label htmlFor="serviceType" className="block text-sm font-medium text-white mb-2">
+                        Service Type *
                       </label>
                       <select
-                        id="service"
-                        name="service"
-                        value={formData.service}
+                        id="serviceType"
+                        name="serviceType"
+                        required
+                        value={formData.serviceType}
                         onChange={handleChange}
                         className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-yellow-300 transition-all duration-300 text-white group-hover:bg-white/15"
                       >
-                        <option value="">Select a service</option>
-                        <option value="web-development">Web Design & Development</option>
-                        <option value="social-media">Social Media Campaigns</option>
-                        <option value="digital-marketing">Digital Marketing</option>
-                        <option value="app-development">App Development</option>
-                        <option value="consultation">Consultation</option>
+                        <option value="">Select Service</option>
+                        {serviceCategories.map((category) => (
+                          <option key={category} value={category}>
+                            {category}
+                          </option>
+                        ))}
                       </select>
+                    </div>
+                    <div className="group">
+                      <label htmlFor="budget" className="block text-sm font-medium text-white mb-2">
+                        Budget Range
+                      </label>
+                      <select
+                        id="budget"
+                        name="budget"
+                        value={formData.budget}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-yellow-300 transition-all duration-300 text-white group-hover:bg-white/15"
+                      >
+                        <option value="">Select Budget</option>
+                        {budgetRanges.map((range) => (
+                          <option key={range} value={range}>
+                            {range}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="group">
+                      <label htmlFor="timeline" className="block text-sm font-medium text-white mb-2">
+                        Timeline
+                      </label>
+                      <select
+                        id="timeline"
+                        name="timeline"
+                        value={formData.timeline}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-yellow-300 transition-all duration-300 text-white group-hover:bg-white/15"
+                      >
+                        <option value="">Select Timeline</option>
+                        {timelines.map((time) => (
+                          <option key={time} value={time}>
+                            {time}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-white mb-3">
+                      Additional Features (Optional)
+                    </label>
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                      {additionalFeatures.map((feature) => (
+                        <button
+                          key={feature}
+                          type="button"
+                          onClick={() => handleFeatureToggle(feature)}
+                          className={`flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-all duration-300 ${
+                            selectedFeatures.includes(feature)
+                              ? 'bg-yellow-300/20 border-2 border-yellow-300 text-white'
+                              : 'bg-white/10 border border-white/30 text-white/70 hover:bg-white/15'
+                          }`}
+                        >
+                          <span className="text-xs">{feature}</span>
+                          {selectedFeatures.includes(feature) && (
+                            <CheckCircle2 className="h-4 w-4 text-yellow-300 ml-1" />
+                          )}
+                        </button>
+                      ))}
                     </div>
                   </div>
 
                   <div className="group">
                     <label htmlFor="message" className="block text-sm font-medium text-white mb-2">
-                      Project Details *
+                      Project Description *
                     </label>
                     <textarea
                       id="message"
                       name="message"
                       required
-                      rows={5}
+                      rows={4}
                       value={formData.message}
                       onChange={handleChange}
                       className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-yellow-300 transition-all duration-300 text-white placeholder-white/50 resize-none group-hover:bg-white/15"
-                      placeholder="Tell us about your project, goals, timeline, and budget..."
+                      placeholder="Describe your project in detail. Include your goals, target audience, specific requirements, and any reference websites or apps you like..."
                     />
                   </div>
 
@@ -283,12 +441,12 @@ const Contact = () => {
                     {isSubmitting ? (
                       <>
                         <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#8B0000] mr-2"></div>
-                        Sending Message...
+                        Sending Request...
                       </>
                     ) : (
                       <>
-                        Send Message
-                        <Send className="ml-2 h-5 w-5" />
+                        <Send className="mr-2 h-5 w-5" />
+                        Request Custom Quote
                       </>
                     )}
                   </button>

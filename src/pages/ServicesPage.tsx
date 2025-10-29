@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Check, ArrowRight, Zap } from 'lucide-react';
 import { useAdmin } from '../contexts/AdminContext';
+import { useNavigate } from 'react-router-dom';
 
 function ServicesPage() {
   const { services } = useAdmin();
+  const navigate = useNavigate();
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [formData, setFormData] = useState({
     name: '',
@@ -18,11 +20,15 @@ function ServicesPage() {
   const serviceCategories = Array.from(new Set(services.map(service => service.category)));
 
   const handleServiceToggle = (serviceId: string) => {
-    setSelectedServices(prev => 
-      prev.includes(serviceId) 
+    setSelectedServices(prev =>
+      prev.includes(serviceId)
         ? prev.filter(id => id !== serviceId)
         : [...prev, serviceId]
     );
+  };
+
+  const handleChooseService = (serviceId: string) => {
+    navigate(`/contact?service=${serviceId}`);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -87,7 +93,10 @@ function ServicesPage() {
                         <span className="font-semibold text-blue-600">{service.delivery}</span>
                       </div>
                     </div>
-                    <button className="w-full btn-primary">
+                    <button
+                      onClick={() => handleChooseService(service.id)}
+                      className="w-full btn-primary"
+                    >
                       Choose Service
                     </button>
                   </div>
