@@ -78,33 +78,136 @@ export function AdminProvider({ children }: { children: ReactNode }) {
       id: '1',
       category: 'Web Design & Development',
       name: 'Dynamic Website',
-      price: '₹12,000–20,000',
+      price: '₹12,000–₹20,000',
       delivery: '1 week',
-      description: 'Full-featured dynamic website with modern design'
+      description: 'Beautiful, responsive websites that convert visitors into customers.',
+      features: ['Responsive Design', 'CMS Integration', 'SEO Ready']
     },
     {
       id: '2',
       category: 'Web Design & Development',
       name: 'Landing Page Design',
-      price: '₹5,000–8,000',
+      price: '₹5,000–₹8,000',
       delivery: '3 days',
-      description: 'High-converting landing page design'
+      description: 'Beautiful, responsive websites that convert visitors into customers.',
+      features: ['High Conversion', 'Mobile Optimized', 'Fast Loading']
     },
     {
       id: '3',
-      category: 'Social Media Campaigns',
-      name: 'Post & Story Creation',
-      price: '₹3,000–8,000/month',
+      category: 'Web Design & Development',
+      name: 'SEO Optimization',
+      price: '₹3,000–₹6,000',
       delivery: 'Ongoing',
-      description: 'Creative content creation and posting'
+      description: 'Beautiful, responsive websites that convert visitors into customers.',
+      features: ['Keyword Research', 'On-page SEO', 'Analytics']
     },
     {
       id: '4',
-      category: 'Application Design & Development',
-      name: 'Mobile App Development',
-      price: '₹20,000–45,000',
-      delivery: '2-4 weeks',
-      description: 'Cross-platform mobile application development'
+      category: 'Web Design & Development',
+      name: 'Hosting + Database Setup',
+      price: '₹3,000–₹6,000',
+      delivery: '1 day',
+      description: 'Beautiful, responsive websites that convert visitors into customers.',
+      features: ['Cloud Hosting', 'SSL Certificate', 'Backup']
+    },
+    {
+      id: '5',
+      category: 'Social Media Campaigns',
+      name: 'Post & Story Creation + Posting',
+      price: '₹3,000–₹8,000/month',
+      delivery: 'Ongoing',
+      description: 'Engaging content that builds your brand and drives engagement.',
+      features: ['Content Calendar', 'Brand Consistency', 'Engagement']
+    },
+    {
+      id: '6',
+      category: 'Social Media Campaigns',
+      name: 'Content Strategy Planning',
+      price: 'Custom Quote',
+      delivery: '1 week',
+      description: 'Engaging content that builds your brand and drives engagement.',
+      features: ['Market Research', 'Competitor Analysis', 'Strategy Document']
+    },
+    {
+      id: '7',
+      category: 'Social Media Campaigns',
+      name: 'Brand Guidelines Creation',
+      price: 'Custom Quote',
+      delivery: '1 week',
+      description: 'Engaging content that builds your brand and drives engagement.',
+      features: ['Logo Design', 'Color Palette', 'Typography']
+    },
+    {
+      id: '8',
+      category: 'Digital Marketing',
+      name: 'Posts & Stories (Content + Graphics)',
+      price: '₹3,000–₹8,000/month',
+      delivery: 'Ongoing',
+      description: 'Strategic marketing campaigns that grow your online presence.',
+      features: ['Custom Graphics', 'Copywriting', 'Scheduling']
+    },
+    {
+      id: '9',
+      category: 'Digital Marketing',
+      name: 'Followers Interaction (DMs & Comments)',
+      price: '₹5,000–₹12,000/month',
+      delivery: 'Ongoing',
+      description: 'Strategic marketing campaigns that grow your online presence.',
+      features: ['Community Management', 'Response Templates', 'Engagement Tracking']
+    },
+    {
+      id: '10',
+      category: 'App Design & Development',
+      name: 'Mobile App UI/UX Design',
+      price: '₹10,000–₹25,000',
+      delivery: '2 weeks',
+      description: 'Custom mobile applications that deliver exceptional user experiences.',
+      features: ['User Research', 'Wireframes', 'Prototypes']
+    },
+    {
+      id: '11',
+      category: 'App Design & Development',
+      name: 'Basic App Development (Flutter/Hybrid)',
+      price: '₹20,000–₹45,000',
+      delivery: '4-6 weeks',
+      description: 'Custom mobile applications that deliver exceptional user experiences.',
+      features: ['Cross-platform', 'API Integration', 'Testing']
+    },
+    {
+      id: '12',
+      category: 'App Design & Development',
+      name: 'App Store Submission',
+      price: '₹2,000',
+      delivery: '1 week',
+      description: 'Custom mobile applications that deliver exceptional user experiences.',
+      features: ['Store Optimization', 'Screenshots', 'Description']
+    },
+    {
+      id: '13',
+      category: 'Website Modifications',
+      name: 'Basic Modifications',
+      price: '₹2,500',
+      delivery: 'Minor content updates, color changes',
+      description: 'Minor content updates, color changes',
+      features: ['Text Updates', 'Image Replacement', 'Color Adjustments']
+    },
+    {
+      id: '14',
+      category: 'Website Modifications',
+      name: 'Intermediate Changes',
+      price: '₹3,000–₹5,000',
+      delivery: 'Layout adjustments, new sections',
+      description: 'Layout adjustments, new sections',
+      features: ['Layout Changes', 'New Sections', 'Feature Updates']
+    },
+    {
+      id: '15',
+      category: 'Website Modifications',
+      name: 'Full Revamp',
+      price: '₹5,000–₹8,000',
+      delivery: 'Complete redesign and restructure',
+      description: 'Complete redesign and restructure',
+      features: ['Complete Redesign', 'New Architecture', 'Modern UI/UX']
     }
   ]);
 
