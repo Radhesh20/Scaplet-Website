@@ -5,37 +5,61 @@ import { useAdmin } from '../contexts/AdminContext';
 
 function ServicesPage() {
   const { services } = useAdmin();
-  const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const [selectedService, setSelectedService] = useState<string>('');
+  const [additionalFeatures, setAdditionalFeatures] = useState<string[]>([]);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     company: '',
     message: '',
-    budget: ''
+    budget: '',
+    serviceType: ''
   });
 
   const serviceCategories = Array.from(new Set(services.map(service => service.category)));
 
-  const handleServiceToggle = (serviceId: string) => {
-    setSelectedServices(prev => 
-      prev.includes(serviceId) 
-        ? prev.filter(id => id !== serviceId)
-        : [...prev, serviceId]
-    );
+  const serviceOptions: { [key: string]: string[] } = {
+    'web-development': [
+      'Dynamic Website',
+      'Landing Page Design',
+      'SEO Optimization',
+      'Hosting + Database Setup'
+    ],
+    'social-media-campaigns': [
+      'Post & Story Creation + Posting',
+      'Content Strategy Planning',
+      'Brand Guidelines Creation'
+    ],
+    'digital-marketing': [
+      'Posts & Stories (Content + Graphics)',
+      'Followers Interaction (DMs & Comments)'
+    ],
+    'app-design-development': [
+      'Mobile App UI/UX Design',
+      'Basic App Development (Flutter/Hybrid)',
+      'App Store Submission'
+    ],
+    'website-modifications': [
+      'Basic Modifications',
+      'Intermediate Changes',
+      'Full Revamp'
+    ]
+  };
+
+  const handleServiceToggle = (serviceName: string) => {
+    setSelectedService(serviceName);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const selectedServiceNames = services
-      .filter(service => selectedServices.includes(service.id))
-      .map(service => service.name);
-    
+
     console.log('Quote Request:', {
       ...formData,
-      selectedServices: selectedServiceNames
+      selectedService,
+      additionalFeatures
     });
-    
+
     alert('Quote request submitted! We\'ll get back to you soon.');
   };
 
@@ -143,6 +167,7 @@ function ServicesPage() {
                   type="tel"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  placeholder="your number (with country code)"
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none glass-effect"
                 />
               </div>
@@ -160,23 +185,87 @@ function ServicesPage() {
             </div>
 
             <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Service Type *
+              </label>
+              <select
+                value={formData.serviceType}
+                onChange={(e) => setFormData({ ...formData, serviceType: e.target.value })}
+                className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none glass-effect"
+              >
+                <option value="">Select service type</option>
+                <option value="web-development">Web Development</option>
+                <option value="social-media-campaigns">Social Media Campaigns</option>
+                <option value="digital-marketing">Digital Marketing</option>
+                <option value="app-design-development">App Design & Development</option>
+                <option value="website-modifications">Website Modifications</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            {formData.serviceType && formData.serviceType !== 'other' && serviceOptions[formData.serviceType] && (
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-4">
+                  Select Service
+                </label>
+                <div className="space-y-3">
+                  {serviceOptions[formData.serviceType].map((serviceName) => (
+                    <label
+                      key={serviceName}
+                      className="flex items-center space-x-3 cursor-pointer glass-effect p-3 rounded-lg hover:bg-blue-50"
+                    >
+                      <input
+                        type="radio"
+                        name="selectedService"
+                        value={serviceName}
+                        checked={selectedService === serviceName}
+                        onChange={() => handleServiceToggle(serviceName)}
+                        className="text-blue-600 focus:ring-blue-500"
+                      />
+                      <span className="text-sm font-medium">{serviceName}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div>
               <label className="block text-sm font-medium text-gray-700 mb-4">
-                Select Services (Check all that apply)
+                Additional Features (Optional)
               </label>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                {services.map((service) => (
+                {[
+                  'E-commerce Integration',
+                  'Payment Gateway',
+                  'User Authentication',
+                  'Admin Dashboard',
+                  'Real-time Chat',
+                  'Push Notifications',
+                  'Analytics Integration',
+                  'Social Media Integration',
+                  'Multi-language Support',
+                  'API Development',
+                  'Database Design',
+                  'Cloud Deployment'
+                ].map((feature) => (
                   <label
-                    key={service.id}
-                    className="flex items-center space-x-3 cursor-pointer glass-effect p-3 rounded-lg hover:bg-blue-50"
+                    key={feature}
+                    className="flex items-center space-x-3 cursor-pointer glass-effect p-3 rounded-full hover:bg-blue-50"
                   >
                     <input
                       type="checkbox"
-                      checked={selectedServices.includes(service.id)}
-                      onChange={() => handleServiceToggle(service.id)}
+                      checked={additionalFeatures.includes(feature)}
+                      onChange={() => {
+                        setAdditionalFeatures(prev =>
+                          prev.includes(feature)
+                            ? prev.filter(f => f !== feature)
+                            : [...prev, feature]
+                        );
+                      }}
                       className="text-blue-600 rounded focus:ring-blue-500"
                     />
-                    <span className="text-sm font-medium">{service.name}</span>
-                    {selectedServices.includes(service.id) && (
+                    <span className="text-sm font-medium">{feature}</span>
+                    {additionalFeatures.includes(feature) && (
                       <Check className="h-4 w-4 text-blue-600" />
                     )}
                   </label>
@@ -194,10 +283,11 @@ function ServicesPage() {
                 className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none glass-effect"
               >
                 <option value="">Select budget range</option>
-                <option value="5000-15000">₹5,000 - ₹15,000</option>
-                <option value="15000-30000">₹15,000 - ₹30,000</option>
-                <option value="30000-50000">₹30,000 - ₹50,000</option>
-                <option value="50000+">₹50,000+</option>
+                <option value="below-10000">below ₹10,000</option>
+                <option value="10000-25000">₹10,000 - ₹25,000</option>
+                <option value="25000-50000">₹25,000 - ₹50,000</option>
+                <option value="50000-100000">₹50,000 - ₹1,00,000</option>
+                <option value="100000+">₹1,00,000+</option>
               </select>
             </div>
 
