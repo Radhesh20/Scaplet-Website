@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Check, ArrowRight, Zap } from 'lucide-react';
 import { useAdmin } from '../contexts/AdminContext';
+import emailjs from '@emailjs/browser';
 
 function ServicesPage() {
   const { services } = useAdmin();
@@ -70,16 +71,48 @@ function ServicesPage() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    console.log('Quote Request:', {
-      ...formData,
-      selectedService,
-      additionalFeatures
-    });
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      phone: formData.phone,
+      company: formData.company,
+      service_type: formData.serviceType,
+      selected_service: selectedService,
+      additional_features: additionalFeatures.join(', '),
+      budget: formData.budget,
+      message: formData.message,
+      to_email: 'scapletofficial@gmail.com',
+      whatsapp_numbers: '9487240051, 9791903451'
+    };
 
-    alert('Quote request submitted! We\'ll get back to you soon.');
+    try {
+      await emailjs.send(
+        'service_scaplet', // Replace with your EmailJS service ID
+        'template_quote_request', // Replace with your EmailJS template ID
+        templateParams,
+        'your_public_key' // Replace with your EmailJS public key
+      );
+
+      alert('Quote request submitted successfully! We\'ll get back to you soon.');
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        message: '',
+        budget: '',
+        serviceType: ''
+      });
+      setSelectedService('');
+      setAdditionalFeatures([]);
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      alert('Failed to send quote request. Please try again or contact us directly.');
+    }
   };
 
   return (
