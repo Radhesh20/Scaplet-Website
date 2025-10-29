@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Check, ArrowRight, Zap } from 'lucide-react';
 import { useAdmin } from '../contexts/AdminContext';
@@ -16,6 +16,7 @@ function ServicesPage() {
     budget: '',
     serviceType: ''
   });
+  const formRef = useRef<HTMLDivElement>(null);
 
   const serviceCategories = Array.from(new Set(services.map(service => service.category)));
 
@@ -49,6 +50,24 @@ function ServicesPage() {
 
   const handleServiceToggle = (serviceName: string) => {
     setSelectedService(serviceName);
+  };
+
+  const handleChooseService = (service: any) => {
+    // Set the service type based on the service category
+    const categoryToType: { [key: string]: string } = {
+      'Web Development': 'web-development',
+      'Social Media Campaigns': 'social-media-campaigns',
+      'Digital Marketing': 'digital-marketing',
+      'App Design & Development': 'app-design-development',
+      'Website Modifications': 'website-modifications'
+    };
+    const serviceType = categoryToType[service.category] || 'other';
+    setFormData(prev => ({ ...prev, serviceType }));
+
+    // Scroll to the form
+    if (formRef.current) {
+      formRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -111,7 +130,7 @@ function ServicesPage() {
                         <span className="font-semibold text-blue-600">{service.delivery}</span>
                       </div>
                     </div>
-                    <button className="w-full btn-primary">
+                    <button className="w-full btn-primary" onClick={() => handleChooseService(service)}>
                       Choose Service
                     </button>
                   </div>
@@ -122,6 +141,7 @@ function ServicesPage() {
 
         {/* Custom Quote Request */}
         <motion.div
+          ref={formRef}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           className="glass-card p-8 mt-16"
@@ -144,6 +164,7 @@ function ServicesPage() {
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  placeholder="Your name"
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none glass-effect"
                 />
               </div>
@@ -156,6 +177,7 @@ function ServicesPage() {
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  placeholder="your@gmail.com"
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none glass-effect"
                 />
               </div>
@@ -179,6 +201,7 @@ function ServicesPage() {
                   type="text"
                   value={formData.company}
                   onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                  placeholder="company/organization name"
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none glass-effect"
                 />
               </div>
