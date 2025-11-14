@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, MessageCircle } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 function ContactPage() {
   const [formData, setFormData] = useState({
@@ -11,11 +12,32 @@ function ContactPage() {
     message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Contact form submitted:', formData);
-    alert('Thank you for your message! We\'ll get back to you soon.');
-    setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+
+    try {
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: 'scapletofficial@gmail.com'
+      };
+
+      await emailjs.send(
+        'service_scaplet', // Replace with your EmailJS service ID
+        'template_contact', // Replace with your EmailJS template ID
+        templateParams,
+        'your_public_key' // Replace with your EmailJS public key
+      );
+
+      alert('Thank you for your message! We\'ll get back to you soon.');
+      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+    } catch (error) {
+      console.error('Email sending failed:', error);
+      alert('Failed to send message. Please try again later.');
+    }
   };
 
   const contactInfo = [

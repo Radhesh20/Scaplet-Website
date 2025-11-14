@@ -70,18 +70,12 @@ function HomePage() {
       <section className="py-16 bg-white/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-gray-600 mb-8">Trusted by amazing companies</p>
-          <div className="scroll-container">
-            <div className="scroll-content flex items-center space-x-8">
-              {[...clientLogos, ...clientLogos].map((logo, index) => (
-                <div key={index} className="flex-shrink-0">
-                  <img
-                    src={logo}
-                    alt={`Client ${index + 1}`}
-                    className="h-12 w-24 object-cover rounded-lg opacity-70 hover:opacity-100 transition-opacity"
-                  />
-                </div>
-              ))}
-            </div>
+          <div className="flex justify-center">
+            <img
+              src={clientLogos[0]}
+              alt="Trusted Companies"
+              className="h-24 w-auto object-cover rounded-lg opacity-70 hover:opacity-100 transition-opacity"
+            />
           </div>
         </div>
       </section>

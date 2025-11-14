@@ -142,7 +142,7 @@ function AboutPage() {
           </div>
         </motion.div>
 
-        {/* Team Section */}
+        {/* Client Logos */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -150,57 +150,17 @@ function AboutPage() {
           className="mb-16"
         >
           <h2 className="text-3xl font-bold mb-12 text-center">
-            <span className="gradient-text">Meet Our Team</span>
+            <span className="gradient-text">Our Clients & Projects</span>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {team.map((member, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2 }}
-                viewport={{ once: true }}
-                className="glass-card p-6 text-center hover:shadow-2xl transition-shadow"
-              >
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
-                />
-                <h3 className="text-xl font-bold mb-2">{member.name}</h3>
-                <p className="text-blue-600 font-medium mb-3">{member.role}</p>
-                <p className="text-gray-600">{member.description}</p>
-              </motion.div>
-            ))}
+          <div className="flex justify-center">
+            <img
+              src="https://images.pexels.com/photos/5238645/pexels-photo-5238645.jpeg"
+              alt="Trusted Companies"
+              className="h-24 w-auto object-cover rounded-lg opacity-70 hover:opacity-100 transition-opacity"
+            />
           </div>
         </motion.div>
 
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="glass-card p-8 text-center"
-        >
-          <h2 className="text-3xl font-bold mb-8">
-            <span className="gradient-text">Our Impact</span>
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { number: '50+', label: 'Projects Completed' },
-              { number: '25+', label: 'Happy Clients' },
-              { number: '2+', label: 'Years of Experience' },
-              { number: '100%', label: 'Client Satisfaction' }
-            ].map((stat, index) => (
-              <div key={index}>
-                <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-gray-600">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </div>
   );
